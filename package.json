@@ -19,6 +19,7 @@
   "homepage": "https://github.com/memocan40/PokemonGameBackend#readme",
   "dependencies": {
     "express": "^4.17.1",
-    "nodemon": "^2.0.7"
+    "nodemon": "^2.0.7",
+    "router-express": "^1.5.2"
   }
 }
