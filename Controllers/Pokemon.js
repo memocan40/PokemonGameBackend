@@ -19,9 +19,19 @@ getById: async (req, res) => {
     // const poke = db.find((item) => item.name.english === "Ivysaur");
     // res.send(db[req.params.id]);
     const id = parseInt(req.params.id);
-    const poke = db.find((item) => item.id === id);
-    res.send(poke);
-  
-  
+    const pokemon = db.find((item) => item.id === id);
+    
+  try{
+      await res.json({
+          code:200,
+          operation:"succes",
+          description:`Pokemon found with id ${id}`,
+          data:pokemon,
+      });
+  }catch(e){
+      console.log(e);
+      res.sendStatus(404);
+  }
+  }
   }
 }
