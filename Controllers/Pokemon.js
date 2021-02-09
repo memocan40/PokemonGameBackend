@@ -34,4 +34,3 @@ getById: async (req, res) => {
   }
   }
   }
-}
