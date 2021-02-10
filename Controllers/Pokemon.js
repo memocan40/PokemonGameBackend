@@ -72,4 +72,49 @@ module.exports = {
   //       res.status(400).json(`Poke with Id ${id} not found`);
   //     }
   //   },
+  //
+  //
+  // --- /pokemon/:id/:info(name|type|base) -----------------------------------------------
+  //
+  getByIdByInfo: async (req, res) => {
+    // const { name, type, base } = req.param;
+    const id = parseInt(req.params.id);
+    const poke = db.find((item) => item.id === id);
+
+    let request = req.params;
+    console.log(request);
+
+    let data = {};
+    if (poke && request.info === "name") {
+      data = {
+        requestedPokemonInfo: {
+          id: poke.id,
+          info: poke.name,
+        },
+      };
+    }
+    if (poke && request.info === "base") {
+      data = {
+        requestedPokemonInfo: {
+          id: poke.id,
+          info: poke.base,
+        },
+      };
+    }
+    if (poke && request.info === "type") {
+      data = {
+        requestedPokemonInfo: {
+          id: poke.id,
+          info: poke.type,
+        },
+      };
+    }
+
+    try {
+      await res.json(data);
+    } catch (e) {
+      console.log(e);
+      res.status(400).json(`Wrong request`);
+    }
+  },
 };
