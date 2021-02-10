@@ -1,36 +1,75 @@
-const db = require("../db.json")
+const db = require("../db.json");
 module.exports = {
-
-getAll: async (_,res) => {
-      try {
+  getAll: async (_, res) => {
+    try {
       await res.json({
         code: 200,
         operation: "success",
         description: "Poke data",
         data: db,
       });
-    }
-    catch (e){
+    } catch (e) {
       console.log(e);
       res.sendStatus(404);
     }
-  } ,
-getById: async (req, res) => {
-    // const poke = db.find((item) => item.name.english === "Ivysaur");
-    // res.send(db[req.params.id]);
+  },
+  //
+  // --- getById with 'find' -----------------------------------------------
+  getById: async (req, res) => {
     const id = parseInt(req.params.id);
     const pokemon = db.find((item) => item.id === id);
-    
-  try{
+
+    try {
       await res.json({
-          code:200,
-          operation:"succes",
-          description:`Pokemon found with id ${id}`,
-          data:pokemon,
+        code: 200,
+        operation: "succes",
+        description: `Pokemon found with id ${id}`,
+        data: pokemon,
       });
-  }catch(e){
+    } catch (e) {
       console.log(e);
       res.sendStatus(404);
-  }
-  }
-  }
+    }
+  },
+  //
+  // --- getById, Variant with 'forEach' -----------------------------------------------
+  //   getById: async (req, res) => {
+  //     const id = parseInt(req.params.id);
+  //     db.forEach((poke) => {
+  //       if (poke.id === id) {
+  //         pokeFoundById = poke;
+  //       }
+  //     });
+  //     try {
+  //       await res.json({
+  //         code: 200,
+  //         operation: "success",
+  //         description: `found pokemon with id ${id}`,
+  //         data: pokeFoundById,
+  //       });
+  //     } catch (e) {
+  //       res.status(400).json(`Poke with Id ${id} not found`);
+  //     }
+  //   },
+  //
+  // --- getById, Variant with 'map' -----------------------------------------------
+  //   getById: async (req, res) => {
+  //     const id = parseInt(req.params.id);
+  //     db.map((poke, index) => {
+  //       if (poke.id === id) {
+  //         console.log(`### found poke with id ${id} on index: ${index}`);
+  //         pokeFoundById = poke;
+  //       }
+  //     });
+  //     try {
+  //       await res.json({
+  //         code: 200,
+  //         operation: "success",
+  //         description: `found pokemon with id ${id}`,
+  //         data: pokeFoundById,
+  //       });
+  //     } catch (e) {
+  //       res.status(400).json(`Poke with Id ${id} not found`);
+  //     }
+  //   },
+};
