@@ -7,7 +7,7 @@ const PORT = process.env.PORT || 3000;
 app.use(cors());
 
 // import route
-const pokemonRoute = require("./Routes/pokemons.js");
+const pokemonRoute = require("./routes/pokemons");
 app.use("/", pokemonRoute);
 
 app.listen(PORT, () =>

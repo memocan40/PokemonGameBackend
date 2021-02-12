@@ -32,52 +32,9 @@ module.exports = {
     }
   },
   //
-  // --- getById, Variant with 'forEach' -----------------------------------------------
-  //   getById: async (req, res) => {
-  //     const id = parseInt(req.params.id);
-  //     db.forEach((poke) => {
-  //       if (poke.id === id) {
-  //         pokeFoundById = poke;
-  //       }
-  //     });
-  //     try {
-  //       await res.json({
-  //         code: 200,
-  //         operation: "success",
-  //         description: `found pokemon with id ${id}`,
-  //         data: pokeFoundById,
-  //       });
-  //     } catch (e) {
-  //       res.status(400).json(`Poke with Id ${id} not found`);
-  //     }
-  //   },
-  //
-  // --- getById, Variant with 'map' -----------------------------------------------
-  //   getById: async (req, res) => {
-  //     const id = parseInt(req.params.id);
-  //     db.map((poke, index) => {
-  //       if (poke.id === id) {
-  //         console.log(`### found poke with id ${id} on index: ${index}`);
-  //         pokeFoundById = poke;
-  //       }
-  //     });
-  //     try {
-  //       await res.json({
-  //         code: 200,
-  //         operation: "success",
-  //         description: `found pokemon with id ${id}`,
-  //         data: pokeFoundById,
-  //       });
-  //     } catch (e) {
-  //       res.status(400).json(`Poke with Id ${id} not found`);
-  //     }
-  //   },
-  //
-  //
   // --- /pokemon/:id/:info(name|type|base) -----------------------------------------------
   //
   getByIdByInfo: async (req, res) => {
-    // const { name, type, base } = req.param;
     const id = parseInt(req.params.id);
     const poke = db.find((item) => item.id === id);
 
