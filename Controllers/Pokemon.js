@@ -3,7 +3,6 @@ module.exports = {
   getAll: async (_, res) => {
     try {
       const dbResult = await Pokemon.find({});
-      console.log(dbResult);
        res.json({
         code: 200,
         operation: "success",
