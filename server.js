@@ -10,7 +10,6 @@ const mongoDB = "mongodb+srv://m001-student:Pilou*963.@sandbox.yfuh3.mongodb.net
 //initialize the connection 
 mongoose.connect(mongoDB, { useNewUrlParser: true });
 
-
 const db = mongoose.connection;
 //Bind connection to error event (to get notification of connection errors)
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
