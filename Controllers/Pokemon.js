@@ -1,4 +1,3 @@
-const db = require("../db.json");
 const Pokemon = require("../Model/Pokemon");
 module.exports = {
   getAll: async (_, res) => {
